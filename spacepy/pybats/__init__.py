@@ -743,8 +743,8 @@ def _scan_bin_header(f, endchar, inttype, floattype):
     # Calculate the end point of the data frame
     # end point = start + header + wrapper bytes + data size):
     info['end'] = info['start'] + head_size +  \
-        2*inttype.itemsize*(1+info['nvar']) + \
-        nbytes*(info['nvar']+info['ndim'])*npoints
+        int(2*inttype.itemsize*(1+info['nvar'])) + \
+        int(nbytes*(info['nvar']+info['ndim'])*npoints)
 
     # Jump to end of current data frame:
     f.seek(info['end'], 0)
